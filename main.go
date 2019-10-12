@@ -61,7 +61,7 @@ func main() {
 
 	http.Handle("/", &templateHandler{filename: "login.html"})
 	http.Handle("/trap", &trapHandler{filename: "trap.html"})
-	if err := http.ListenAndServe(addr, nil); err != nil {
+	if err := http.ListenAndServe(":"+addr, nil); err != nil {
 		log.Fatal("ListenAndServe:", err)
 	}
 }
