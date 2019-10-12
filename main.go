@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"sync"
 	"time"
+	"os"
 )
 
 // templは1つのテンプレートを表します
@@ -55,12 +56,12 @@ func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	var addr = flag.String("addr", ":8080", "アプリケーションのアドレス")
+	addr := os.Getenv("PORT")
 	flag.Parse() // フラグを解釈します
 
 	http.Handle("/", &templateHandler{filename: "login.html"})
 	http.Handle("/trap", &trapHandler{filename: "trap.html"})
-	if err := http.ListenAndServe(*addr, nil); err != nil {
+	if err := http.ListenAndServe(addr, nil); err != nil {
 		log.Fatal("ListenAndServe:", err)
 	}
 }
