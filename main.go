@@ -11,14 +11,12 @@ import (
 	"os"
 )
 
-// templは1つのテンプレートを表します
 type templateHandler struct {
 	once     sync.Once
 	filename string
 	templ    *template.Template
 }
 
-// templは1つのテンプレートを表します
 type trapHandler struct {
 	once     sync.Once
 	filename string
@@ -26,7 +24,6 @@ type trapHandler struct {
 }
 
 
-// ServeHTTPはHTTPリクエストを処理します
 func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.once.Do(func() {
 		t.templ =
@@ -37,7 +34,7 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.templ.Execute(w, data)
 }
 
-// ServeHTTPはHTTPリクエストを処理します
+
 func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.once.Do(func() {
 		t.templ =
@@ -45,7 +42,8 @@ func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				t.filename)))
 	})
 	const layout = "2006-01-02 15:04:05"
-	access := time.Now()
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	access := time.Now().In(jst)
 	data := map[string]interface{}{
 		"Host": r.Host,
 		"IP": r.RemoteAddr,
@@ -57,7 +55,7 @@ func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	addr := os.Getenv("PORT")
-	flag.Parse() // フラグを解釈します
+	flag.Parse()
 
 	http.Handle("/", &templateHandler{filename: "login.html"})
 	http.Handle("/trap", &trapHandler{filename: "trap.html"})
