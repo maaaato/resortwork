@@ -1,24 +1,33 @@
-<html>
-  <head>
+<html lang="en" class="gr__bootstrapdocs_com"><head>
     <title>WANA!</title>
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet"
     href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootstrapdocs.com/v3.3.1/docs/examples/cover/cover.css">
   </head>
-  <body>
-  <div class="container">
-    <h1>あなたの出席番号、名前、住所をいただきました。</h1>
-    <p>あなたがこのサイトにアクセスしたことを担当の先生に連絡します。</p>
-    <p>もし連絡してほしくない場合は24時間以内に10万円をクレジットカードで支払ってください。</p>
-    <div>
-      <label for="name">クレジットカード番号:</label>
-      <input type="number" id="number" name="number">
+
+  <body data-gr-c-s-loaded="true">
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+          <div class="inner cover">
+            <h1 class="cover-heading">あなたのIPアドレスとブラウザの情報はすでに手に入れています。</h1>
+            <p class="lead" style="color:#CC3333;">あなたがこのサイトにアクセスしたことを担当の先生に連絡します。</br>もし連絡してほしくない場合は24時間以内に10万円をクレジットカードで支払ってください。</p>
+            <label class="lead" for="name">クレジットカード番号:</label>
+            <input type="number" id="number" name="number">
+            <h2>あなたのIPアドレスとブラウザの情報はすでに手に入れています。</h2>
+            <table border="5">
+            <tr>
+            <td><p class="lead">アクセスIP <span style="color:#FFD700">{{.IP}}</span></p></td>
+            </tr>
+            <tr>
+            <td><p class="lead">ブラウザの種類 <span style="color:#FFD700">{{.UserAgent}}</span></p></td>
+            </tr>
+            <tr>
+            <td><p class="lead">アクセス時間 <span style="color:#FFD700">{{.Time}}</span></p></td>
+            </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    <div>
-      <p>あなたのIPアドレスとブラウザの情報はすでに手に入れています。</p>
-      <p>アクセスIP {{.IP}}</p>
-      <p>ブラウザの種類 {{.UserAgent}}<p>
-      <p>アクセス時間 {{.Time}}</p>
-    </div>
-  </body>
-</html>
+</body></html>

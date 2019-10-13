@@ -3,33 +3,39 @@
     <title>ログイン</title>
     <link rel="stylesheet"
         href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link href="https://bootstrapdocs.com/v3.3.1/docs/examples/signin/signin.css" rel="stylesheet">
   </head>
-  <body>
+  <body data-gr-c-s-loaded="true">
     <div class="container">
-      <div class="page-header">
-        <h1>あなただけに今度のテストの問題を教えます！</br>1時間以内にログインしてください！</h1>
-      </div>
-      <div class="panel panel-danger">
-        <div class="panel-body">
-          <form action="/trap" method="post">
-            <div>
-            <label for="name">出席番号:</label>
-            <input type="number" id="number" name="number">
-            <div>
-            <div>
-            <label for="name">名前:</label>
-            <input type="text" id="name" name="name">
-            <div>
-            <div>
-            <label for="name">住所:</label>
-            <input type="text" id="address" name="address">
-            <div>
-            <div class="button">
-              <button type="submit">ログインする</button>
-            </div>
-          <form>
+      <form class="form-signin" style="max-width: 675px;" role="form" action="/trap">
+      <h2 class="form-signin-heading">あなただけに今度のテストの問題を教えます！</br>1時間以内にログインしてください！</h2>
+        <label for="inputNumber" class="sr-only">出席番号</label>
+        <input type="number" id="inputNumber" class="form-control" placeholder="出席番号" required="" autofocus="">
+        <label for="inputName" class="sr-only">名前</label>
+        <input type="text" id="inputName" class="form-control" placeholder="名前" required="" autofocus="">
+        <label for="inputAddress" class="sr-only">住所</label>
+        <input type="text" id="inputAddress" class="form-control" placeholder="住所" required="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+      </form>
+    </div>
+<!--
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <h1>あなただけに今度のテストの問題を教えます！</br>1時間以内にログインしてください！</h1>
         </div>
+        <form action="/trap" method="post">
+          <label for="name">出席番号:</label>
+          <input type="number" id="number" name="number">
+          <label for="name">名前:</label>
+          <input type="text" id="name" name="name">
+          <label for="name">住所:</label>
+          <input type="text" id="address" name="address">
+          <div class="button">
+            <button type="submit">ログインする</button>
+          </div>
+        <form>
       </div>
     </div>
+-->
   </body>
 </html>
