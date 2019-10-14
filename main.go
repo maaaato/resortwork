@@ -9,6 +9,7 @@ import (
 	"sync"
 	"time"
 	"os"
+	"fmt"
 )
 
 type templateHandler struct {
@@ -44,6 +45,7 @@ func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	const layout = "2006-01-02 15:04:05"
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	access := time.Now().In(jst)
+	fmt.Println(r.Header.Get("X-Forwarded-For"))
 	data := map[string]interface{}{
 		"Host": r.Header.Get("X-Forwarded-For"),
 		"IP": r.RemoteAddr,
