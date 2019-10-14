@@ -45,7 +45,7 @@ func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	access := time.Now().In(jst)
 	data := map[string]interface{}{
-		"Host": r.Host,
+		"Host": r.Header.Get("X-Forwarded-For"),
 		"IP": r.RemoteAddr,
 		"UserAgent": r.Header.Get("User-Agent"),
 		"Time": access.Format(layout),
