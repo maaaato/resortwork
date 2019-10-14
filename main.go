@@ -47,7 +47,7 @@ func (t *trapHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	access := time.Now().In(jst)
 	fmt.Println(r.Header.Get("X-Forwarded-For"))
 	data := map[string]interface{}{
-		"Host": r.Header.Get("X-Forwarded-For"),
+		"Host": r.Host,
 		"IP": r.RemoteAddr,
 		"UserAgent": r.Header.Get("User-Agent"),
 		"Time": access.Format(layout),
